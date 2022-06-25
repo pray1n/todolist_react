@@ -4,18 +4,22 @@ import Element from "./Element";
 //later from local storage
 const todolistData = [
     {
-        entry: "Eintrag 1"
+        entry: "Add new entry here and enter ...",
+        data: false
     },
     {
-        entry: "Eintrag 2"
+        entry: "Eintrag 2",
+        data: true
     },
     {
-        entry: "Eintrag 3"
+        entry: "Eintrag 3",
+        data: true
     },
     {
-        entry: "Eintrag 4"
+        entry: "Eintrag 4",
+        data: true
     }
-]
+];
 
 /* same functionality as below
 function elements(dataObj) {
@@ -26,7 +30,7 @@ const elemList = todolistData.map(elements);
 */
 
 const elemList = todolistData.map((dataObj, index) => {
-    return <Element key={index} />;
+    return <Element key={index} data={dataObj} />;
 });
 
 function TodoList() {
