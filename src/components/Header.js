@@ -1,7 +1,7 @@
 function Header() {
     return (
       <div className="header">
-          Header
+          <h3>Todo list</h3>
       </div>
     );
 }

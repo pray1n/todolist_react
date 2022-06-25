@@ -36,7 +36,6 @@ const elemList = todolistData.map((dataObj, index) => {
 function TodoList() {
     return (
       <div className="todolist">
-        <h3>Todo list</h3>
         {elemList}
       </div>
     );
