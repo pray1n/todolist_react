@@ -23,15 +23,39 @@ body {
 }
 
 .todoElement {
-  margin: 0.2rem 1rem;
+  display: flex;
+  flex-flow: row nowrap; 
+  justify-content: space-between; 
+  align-items: center;
   width: 50%;
   border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: antiquewhite;
 }
 
 .todoElement input {
-  width: 80%;
+  flex: 9 1 auto;
   height: 1.8rem;
   padding: 0.3rem;
   border: 1px solid #333;
   border-radius: 0.2rem;
+}
+
+.todoElement button {
+  flex: 1 1 auto;
+  height: 1.8rem;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid #333;
+  border-radius: 0.2rem;
+  margin: 0 0.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .todoElement {
+    flex-flow: column nowrap; justify-content: center; gap: 0.5rem;
+  }
+  .todoElement input, .todoElement button {
+    flex:5;
+  }
 }
