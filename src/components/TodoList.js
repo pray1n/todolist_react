@@ -1,29 +1,29 @@
 import Element from "./Element";
 
 //eventually later further properties
-//later from local storage
+//later from local storage or database
 const todolistData = [
     {
         entry: "Add new entry here and enter ...",
-        data: false
+        editable: false
+    },
+    {
+        entry: "Eintrag 1",
+        editable: true
     },
     {
         entry: "Eintrag 2",
-        data: true
+        editable: true
     },
     {
         entry: "Eintrag 3",
-        data: true
-    },
-    {
-        entry: "Eintrag 4",
-        data: true
+        editable: true
     }
 ];
 
 /* same functionality as below
-function elements(dataObj) {
-    return <Element />;
+function elements(dataObj, index) {
+    return <Element key={index} data={dataObj}/>;
 }
 
 const elemList = todolistData.map(elements);
