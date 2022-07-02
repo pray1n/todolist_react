@@ -1,15 +1,16 @@
-function Element({data}) {
-    if(data.editable === false) {
+function Element({todoTask}) {
+    if(todoTask.data === false) {
       return (
         <div className="todoElement">
-          <input type="text" value={data.entry} readOnly/>
+          <input type="text" value={todoTask.entry} readOnly/>
         </div>
       );
     }
     return (
       <div className="todoElement">
-        <input type="text" value={data.entry} readOnly/>
+        <input type="text" value={todoTask.entry} />
         <button>Delete</button>
+        <button>Completed</button>
       </div>
     );
 }
