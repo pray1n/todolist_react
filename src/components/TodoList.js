@@ -14,8 +14,10 @@ function TodoList(){
         setTodos(newList);
     }
 
-    const addEntry = newEntry => {
-        setTodos(prev => ([...prev, newEntry]));
+    const handleEnter = (event) => {
+        if(event.key === "Enter") {
+            setTodos(prev => ([...prev, {id: 0, text: event.target.value, data: true, complete: false}]));
+        }
     }
 
     const deleteEntry = id => {
@@ -25,7 +27,7 @@ function TodoList(){
 
     const entryList = todos.map((entry, index) => {
         entry.id = index;
-        return <Element key={index} entry={entry} updateEntry={updateEntry} addEntry={addEntry} deleteEntry={deleteEntry} />;
+        return <Element key={index} entry={entry} updateEntry={updateEntry} handleEnter={handleEnter} deleteEntry={deleteEntry} />;
     });
 
     return (
