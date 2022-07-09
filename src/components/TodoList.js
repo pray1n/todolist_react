@@ -2,14 +2,16 @@ import {useState, useEffect} from "react";
 import Element from "./Element";
 
 function TodoList() {
-    const [todos, setTodos] = useState([{id: -1, text: "Add new entry here and enter ...", data: false, complete: false}]);
     const key = 1; //key should be a date
+    const [todos, setTodos] = useState(() => getStorage());
 
-    useEffect(() => {
-        // const stringValues = localStorage.getItem(key);
-        // const values = JSON.parse(stringValues);
-        // setTodoList(prev => ([...prev, values]));
-    }, []);
+    function getStorage() {
+        const stringValues = localStorage.getItem(key);
+        if(stringValues == null)
+            return [];
+        let values = JSON.parse(stringValues);
+        return values;
+    }
 
     useEffect(() => {
         const stringValues = JSON.stringify(todos);
@@ -30,6 +32,7 @@ function TodoList() {
     const addEntry = (event) => {
         if(event.key === "Enter") {
             setTodos(prev => ([...prev, {id: 0, text: event.target.value, data: true, complete: false}]));
+            event.target.value = "";
         }
     }
 
@@ -45,6 +48,9 @@ function TodoList() {
 
     return (
       <div className="todolist">
+        <div className="todoElement">
+            <input type="text" placeholder="Add new entry here and enter ..." onKeyDown = {addEntry} />
+        </div>
         {entryList}
       </div>
     );
