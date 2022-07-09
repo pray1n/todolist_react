@@ -4,10 +4,11 @@ import Element from "./Element";
 function TodoList(){
     const [todos, setTodos] = useState([{id: -1, text: "Add new entry here and enter ...", data: false, complete: false}]);
 
-    const updateEntry = (id, value) => {
+    const updateEntry = (id, complete, value) => {
         const newList = todos.map((entry) => {
             if(entry.id === id) {
                 entry.text = value;
+                entry.complete = complete;
             }
             return entry;
         });
