@@ -2,7 +2,7 @@ import {useState} from "react";
 import Element from "./Element";
 
 function TodoList(){
-    const [todos, setTodos] = useState([{id: "-1", text: "Add new entry here and enter ...", data: false, complete: false}]);
+    const [todos, setTodos] = useState([{id: -1, text: "Add new entry here and enter ...", data: false, complete: false}]);
 
     const updateEntry = (id, value) => {
         const newList = todos.map((entry) => {
@@ -14,13 +14,13 @@ function TodoList(){
         setTodos(newList);
     }
 
-    const addEntry = (newEntry) => {
+    const addEntry = newEntry => {
         setTodos(prev => ([...prev, newEntry]));
-        console.log(todos);
     }
 
-    const deleteEntry = (id) => {
-
+    const deleteEntry = id => {
+        const newList = todos.filter((entry) => entry.id !== id);
+        setTodos(newList);
     }
 
     const entryList = todos.map((entry, index) => {
