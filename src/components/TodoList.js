@@ -1,8 +1,20 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Element from "./Element";
 
-function TodoList(){
+function TodoList() {
     const [todos, setTodos] = useState([{id: -1, text: "Add new entry here and enter ...", data: false, complete: false}]);
+    const key = 1; //key should be a date
+
+    useEffect(() => {
+        // const stringValues = localStorage.getItem(key);
+        // const values = JSON.parse(stringValues);
+        // setTodoList(prev => ([...prev, values]));
+    }, []);
+
+    useEffect(() => {
+        const stringValues = JSON.stringify(todos);
+        localStorage.setItem(key, stringValues);
+    }, [todos]);
 
     const updateEntry = (id, complete, value) => {
         const newList = todos.map((entry) => {
@@ -37,7 +49,6 @@ function TodoList(){
         {entryList}
       </div>
     );
-    
 }
   
 export default TodoList;
