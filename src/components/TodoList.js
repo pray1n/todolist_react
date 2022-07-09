@@ -1,52 +1,36 @@
+import {useState} from "react";
 import Element from "./Element";
-import {useState} from "react"
-
-//eventually later further properties
-//later from local storage or database
-const todolistData = [
-    {
-        id: "1",
-        entry: "Add new entry here and enter ...",
-        data: false
-        
-    },
-    {
-        id: "2",
-        entry: "Eintrag 2",
-        data: true,
-        complete: true
-    },
-    {
-        id: "3",
-        entry: "Eintrag 3",
-        data: true,
-        complete: false
-    },
-    {
-        id: "4",
-        entry: "Eintrag 4",
-        data: true,
-        complete: true
-    }
-];
-
-/* same functionality as below
-function elements(dataObj, index) {
-    return <Element key={index} data={dataObj}/>;
-}
-
-const elemList = todolistData.map(elements);
-*/
-
-
 
 function TodoList(){
-    const [todos, setTodos ] = useState(todolistData);
+    const [todos, setTodos] = useState([{id: "-1", text: "Add new entry here and enter ...", data: false, complete: false}]);
+
+    const updateEntry = (id, value) => {
+        const newList = todos.map((entry) => {
+            if(entry.id === id) {
+                entry.text = value;
+            }
+            return entry;
+        });
+        setTodos(newList);
+    }
+
+    const addEntry = (newEntry) => {
+        setTodos(prev => ([...prev, newEntry]));
+        console.log(todos);
+    }
+
+    const deleteEntry = (id) => {
+
+    }
+
+    const entryList = todos.map((entry, index) => {
+        entry.id = index;
+        return <Element key={index} entry={entry} updateEntry={updateEntry} addEntry={addEntry} deleteEntry={deleteEntry} />;
+    });
+
     return (
       <div className="todolist">
-        {todos.map((todoItem, index) => {
-        return <Element key={index} todoTask={todoItem} />
-    })}
+        {entryList}
       </div>
     );
     
