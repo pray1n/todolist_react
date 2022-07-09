@@ -7,6 +7,7 @@ html * {
 body {
   background-color: beige;
   font-family: 'Josefin Sans', sans-serif;
+  font-size: 14pt;
 }
 
 .App {
@@ -43,6 +44,7 @@ body {
   justify-content: space-around; 
   align-items: stretch;
   gap: 0.5rem;
+
 }
 
 .todoElement {
@@ -55,6 +57,7 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: antiquewhite;
+  font-size: 1.5rem;
 }
 
 .todoElement input[type=text] {
@@ -63,6 +66,11 @@ body {
   border: 1px solid chocolate;
   border-radius: 0.2rem;
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.todoElement input[type=text].linethrough {
+  text-decoration: line-through;
+  color: #030;
 }
 
 .todoElement input[type=checkbox] {
