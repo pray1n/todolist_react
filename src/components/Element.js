@@ -1,8 +1,8 @@
-function Element({entry, updateEntry, handleEnter, deleteEntry}) {
+function Element({entry, updateEntry, addEntry, deleteEntry}) {
   if(entry.data === false) {
     return (
       <div className="todoElement">
-        <input type="text" placeholder={entry.text} onChange={(event) => updateEntry(entry.id, event.target.value)} onKeyDown = {handleEnter} />
+        <input type="text" placeholder={entry.text} onChange={(event) => updateEntry(entry.id, event.target.value)} onKeyDown = {addEntry} />
       </div>
     );
   }

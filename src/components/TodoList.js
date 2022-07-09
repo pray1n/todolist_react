@@ -15,8 +15,9 @@ function TodoList(){
         setTodos(newList);
     }
 
-    const handleEnter = (event) => {
+    const addEntry = (event) => {
         if(event.key === "Enter") {
+            //console.log(todos[0]);
             setTodos(prev => ([...prev, {id: 0, text: event.target.value, data: true, complete: false}]));
         }
     }
@@ -28,7 +29,7 @@ function TodoList(){
 
     const entryList = todos.map((entry, index) => {
         entry.id = index;
-        return <Element key={index} entry={entry} updateEntry={updateEntry} handleEnter={handleEnter} deleteEntry={deleteEntry} />;
+        return <Element key={index} entry={entry} updateEntry={updateEntry} addEntry={addEntry} deleteEntry={deleteEntry} />;
     });
 
     return (
