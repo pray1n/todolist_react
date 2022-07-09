@@ -1,11 +1,10 @@
-function Element({entry, updateEntry, addEntry, deleteEntry}) {
-  //or: onChange={({target}) => updateEntry(entry.id, target.value)}
+function Element({entry, updateEntry, deleteEntry}) {
   return (
     <div className="todoElement">
-      <input type="text" value={entry.text} onChange={(event) => updateEntry(entry.id, entry.complete, event.target.value)} 
+      <input type="text" value={entry.text} onChange={({target}) => updateEntry(entry.id, entry.complete, target.value)} 
         disabled={entry.complete} className={entry.complete?"linethrough":""} />
       <button onClick={() => deleteEntry(entry.id)}>Delete</button>
-      <input type="checkbox" checked={entry.complete} onChange={(event) => updateEntry(entry.id, event.target.checked, entry.text)} />
+      <input type="checkbox" checked={entry.complete} onChange={({target}) => updateEntry(entry.id, target.checked, entry.text)} />
     </div>
   );
 }

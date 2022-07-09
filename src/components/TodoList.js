@@ -29,10 +29,10 @@ function TodoList() {
         setTodos(newList);
     }
 
-    const addEntry = (event) => {
-        if(event.key === "Enter") {
-            setTodos(prev => ([...prev, {id: 0, text: event.target.value, data: true, complete: false}]));
-            event.target.value = "";
+    const addEntry = ({target, key}) => {
+        if(key === "Enter") {
+            setTodos(prev => ([...prev, {id: 0, text: target.value, data: true, complete: false}]));
+            //target.value = "";
         }
     }
 
@@ -43,7 +43,7 @@ function TodoList() {
 
     const entryList = todos.map((entry, index) => {
         entry.id = index;
-        return <Element key={index} entry={entry} updateEntry={updateEntry} addEntry={addEntry} deleteEntry={deleteEntry} />;
+        return <Element key={index} entry={entry} updateEntry={updateEntry} deleteEntry={deleteEntry} />;
     });
 
     return (
