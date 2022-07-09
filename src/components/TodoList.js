@@ -29,7 +29,6 @@ function TodoList() {
 
     const addEntry = (event) => {
         if(event.key === "Enter") {
-            //console.log(todos[0]);
             setTodos(prev => ([...prev, {id: 0, text: event.target.value, data: true, complete: false}]));
         }
     }
